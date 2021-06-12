@@ -26,4 +26,5 @@ public class Vehicle {
     private double extra_km_price;
     private String reg_number;
     private String color;
+    private String availability;
 }

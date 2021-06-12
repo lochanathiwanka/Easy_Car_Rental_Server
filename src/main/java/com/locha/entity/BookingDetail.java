@@ -25,6 +25,10 @@ public class BookingDetail {
     @JoinColumn(name = "vid", referencedColumnName = "vid", insertable = false, updatable = false)
     private Vehicle vehicle;
 
+    private String did;
+    private String pickup_date;
+    private String return_date;
+    private String return_time;
     private double rental_fee;
     private double ldw_fee;
 }

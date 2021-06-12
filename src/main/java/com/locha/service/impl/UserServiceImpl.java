@@ -44,7 +44,6 @@ public class UserServiceImpl implements UserService {
     public void addCustomer(CustomerDTO dto) {
         Optional<Customer> customer = customerRepo.findById(dto.getId());
         Optional<User> user = userRepo.findById(dto.getUser().getUid());
-
         if (customer.isPresent() || user.isPresent()) {
             throw new ValidationException("Customer is already registered in the db");
         } else {
@@ -57,7 +56,6 @@ public class UserServiceImpl implements UserService {
     public void addAdmin(AdminDTO dto) {
         Optional<Admin> admin = adminRepo.findById(dto.getAid());
         Optional<User> user = userRepo.findById(dto.getUser().getUid());
-
         if (admin.isPresent() || user.isPresent()) {
             throw new ValidationException("Admin is already registered in the db");
         } else {
@@ -70,7 +68,6 @@ public class UserServiceImpl implements UserService {
     public void addDriver(DriverDTO dto) {
         Optional<Driver> driver = driverRepo.findById(dto.getDid());
         Optional<User> user = userRepo.findById(dto.getUser().getUid());
-
         if (driver.isPresent() || user.isPresent()) {
             throw new ValidationException("Driver is already registered in the db");
         } else {
