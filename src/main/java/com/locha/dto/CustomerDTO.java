@@ -1,23 +1,15 @@
-package com.locha.entity;
+package com.locha.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Customer {
-    @Id
+public class CustomerDTO {
     private String id;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "uid", referencedColumnName = "uid")
-    private User user;
-
+    private UserDTO user;
     private String name;
     private String address;
     private String nic;

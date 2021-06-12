@@ -17,7 +17,7 @@ public class Request {
     private String rid;
 
     @ManyToOne
-    @JoinColumn(name = "cid", referencedColumnName = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "cid", referencedColumnName = "id")
     private Customer customer;
 
     private double total_fee;

@@ -1,26 +1,15 @@
-package com.locha.entity;
+package com.locha.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class RequestDetail {
-    @Id
+public class RequestDetailDTO {
     private String rd_id;
-
-    @ManyToOne
-    @JoinColumn(name = "rid", referencedColumnName = "rid")
-    private Request request;
-
+    private RequestDTO request;
     private String vid;
     private String did;
     private String pickup_date;

@@ -17,7 +17,7 @@ public class Booking {
     private String bid;
 
     @ManyToOne
-    @JoinColumn(name = "cid", referencedColumnName = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "cid", referencedColumnName = "id")
     private Customer customer;
 
     @OneToMany(mappedBy = "booking", cascade = CascadeType.ALL)
