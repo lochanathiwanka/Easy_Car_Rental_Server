@@ -11,7 +11,7 @@ public class RequestDetailDTO {
     private String rd_id;
     private RequestDTO request;
     private String vid;
-    private String did;
+    private String driver;
     private String pickup_date;
     private String return_date;
     private double rental_fee;

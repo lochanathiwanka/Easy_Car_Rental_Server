@@ -22,6 +22,7 @@ public class Vehicle {
     private String fuel_type;
     private double daily_rate;
     private double monthly_rate;
+    private int mileage;
     private double free_mileage_price;
     private double extra_km_price;
     private String reg_number;

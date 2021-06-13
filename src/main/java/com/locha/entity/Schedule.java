@@ -13,18 +13,13 @@ import javax.persistence.ManyToOne;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class RequestDetail {
+public class Schedule {
     @Id
-    private String rd_id;
+    private String sdid;
 
     @ManyToOne
-    @JoinColumn(name = "rid", referencedColumnName = "rid")
-    private Request request;
+    @JoinColumn(name = "did", referencedColumnName = "did")
+    private Driver driver;
 
-    private String vid;
-    private String driver;
-    private String pickup_date;
-    private String return_date;
-    private double rental_fee;
-    private double ldw_fee;
+    private String date;
 }

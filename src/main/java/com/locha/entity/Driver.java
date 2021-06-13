@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -22,5 +24,8 @@ public class Driver {
     private String address;
     private String contact;
     private String nic;
+
+    @OneToMany(mappedBy = "driver", cascade = CascadeType.ALL)
+    private List<Schedule> scheduleList = new ArrayList<>();
 
 }
