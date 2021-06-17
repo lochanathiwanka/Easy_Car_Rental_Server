@@ -4,8 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
@@ -14,14 +14,18 @@ import javax.persistence.ManyToOne;
 @AllArgsConstructor
 @Data
 public class RequestDetail {
-    @Id
-    private String rd_id;
+    @EmbeddedId
+    private RDCompositeKey pk;
 
     @ManyToOne
-    @JoinColumn(name = "rid", referencedColumnName = "rid")
+    @JoinColumn(name = "rid", referencedColumnName = "rid", insertable = false, updatable = false)
     private Request request;
 
-    private String vid;
+    @ManyToOne
+    @JoinColumn(name = "vid", referencedColumnName = "vid", insertable = false, updatable = false)
+    private Vehicle vehicle;
+
+    private int qty;
     private String driver;
     private String pickup_date;
     private String return_date;

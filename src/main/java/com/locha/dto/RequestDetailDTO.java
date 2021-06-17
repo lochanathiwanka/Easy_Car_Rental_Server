@@ -8,9 +8,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class RequestDetailDTO {
-    private String rd_id;
-    private RequestDTO request;
-    private String vid;
+    private RDCompositeKeyDTO pk;
+    private int qty;
     private String driver;
     private String pickup_date;
     private String return_date;

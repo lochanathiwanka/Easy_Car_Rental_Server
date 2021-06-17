@@ -1,11 +1,11 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="Easy_Car_Rental">
-    <output-path>$PROJECT_DIR$/out/artifacts/Easy_Car_Rental</output-path>
+  <artifact type="exploded-war" name="Easy_Car_Rental_Server">
+    <output-path>$PROJECT_DIR$/out/artifacts/Easy_Car_Rental_Server</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="Easy_Car_Rental" />
-          <element id="jpa-descriptors" facet="Easy_Car_Rental/jpa/JPA" />
+          <element id="module-output" name="Easy_Car_Rental_Server" />
+          <element id="jpa-descriptors" facet="Easy_Car_Rental_Server/jpa/JPA" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:5.3.7" />
@@ -25,7 +25,7 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:5.3.7" />
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:5.3.7" />
           <element id="library" level="project" name="Maven: org.aspectj:aspectjrt:1.9.6" />
-          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.30" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.26" />
           <element id="library" level="project" name="Maven: org.hibernate:hibernate-core:5.4.32.Final" />
           <element id="library" level="project" name="Maven: org.jboss.logging:jboss-logging:3.4.1.Final" />
           <element id="library" level="project" name="Maven: javax.persistence:javax.persistence-api:2.2" />
@@ -39,16 +39,17 @@
           <element id="library" level="project" name="Maven: org.dom4j:dom4j:2.1.3" />
           <element id="library" level="project" name="Maven: org.hibernate.common:hibernate-commons-annotations:5.1.2.Final" />
           <element id="library" level="project" name="Maven: javax.xml.bind:jaxb-api:2.3.1" />
-          <element id="library" level="project" name="Maven: org.glassfish.jaxb:jaxb-runtime:2.3.4" />
-          <element id="library" level="project" name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:2.3.3" />
-          <element id="library" level="project" name="Maven: org.glassfish.jaxb:txw2:2.3.4" />
-          <element id="library" level="project" name="Maven: com.sun.istack:istack-commons-runtime:3.0.12" />
-          <element id="library" level="project" name="Maven: com.sun.activation:jakarta.activation:1.2.2" />
+          <element id="library" level="project" name="Maven: org.glassfish.jaxb:jaxb-runtime:2.3.1" />
+          <element id="library" level="project" name="Maven: org.glassfish.jaxb:txw2:2.3.1" />
+          <element id="library" level="project" name="Maven: com.sun.istack:istack-commons-runtime:3.0.7" />
+          <element id="library" level="project" name="Maven: org.jvnet.staxex:stax-ex:1.8" />
+          <element id="library" level="project" name="Maven: com.sun.xml.fastinfoset:FastInfoset:1.2.15" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:8.0.25" />
+          <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:3.11.4" />
           <element id="library" level="project" name="Maven: org.modelmapper:modelmapper:2.4.4" />
         </element>
       </element>
-      <element id="javaee-facet-resources" facet="Easy_Car_Rental/web/Web" />
+      <element id="javaee-facet-resources" facet="Easy_Car_Rental_Server/web/Web" />
     </root>
   </artifact>
 </component>

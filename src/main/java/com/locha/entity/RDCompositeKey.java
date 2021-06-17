@@ -11,7 +11,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class CompositeKey implements Serializable {
-    private String bid;
-    private String vdid;
+public class RDCompositeKey implements Serializable {
+    private String rid;
+    private String vid;
 }

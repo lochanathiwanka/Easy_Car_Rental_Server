@@ -71,4 +71,9 @@ public class RequestServiceImpl implements RequestService {
             throw new ValidationException("There is no any matching Requests in the system!");
         }
     }
+
+    @Override
+    public String getLastRid() {
+        return requestRepo.geLastRid();
+    }
 }

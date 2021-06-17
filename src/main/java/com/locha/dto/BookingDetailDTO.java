@@ -9,8 +9,6 @@ import lombok.NoArgsConstructor;
 @Data
 public class BookingDetailDTO {
     private CompositeKeyDTO pk;
-    private BookingDTO booking;
-    private VehicleDTO vehicle;
     private String did;
     private String pickup_date;
     private String return_date;

@@ -23,6 +23,7 @@ public class Request {
     private double total_fee;
     private String bank_slip;
     private String message;
+    private String status;
 
     @OneToMany(mappedBy = "request", cascade = CascadeType.ALL)
     private List<RequestDetail> request_detail_list = new ArrayList<>();

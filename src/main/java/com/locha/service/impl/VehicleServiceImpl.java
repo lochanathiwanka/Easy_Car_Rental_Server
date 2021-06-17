@@ -27,12 +27,14 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     public void addVehicle(VehicleDTO dto) {
-        if (vehicleRepo.existsById(dto.getVid())) {
+        /*if (vehicleRepo.existsById(dto.getVid())) {
             throw new ValidationException("Vehicle is already in the system!");
         } else {
             Vehicle vehicle = mapper.map(dto, Vehicle.class);
             vehicleRepo.save(vehicle);
-        }
+        }*/
+        Vehicle vehicle = mapper.map(dto, Vehicle.class);
+        vehicleRepo.save(vehicle);
     }
 
     @Override

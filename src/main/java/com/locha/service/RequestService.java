@@ -14,4 +14,6 @@ public interface RequestService {
     ArrayList<RequestDTO> findAllRequests();
 
     RequestDTO findRequestById(String id);
+
+    String getLastRid();
 }
