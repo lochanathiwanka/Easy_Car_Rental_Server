@@ -32,16 +32,22 @@ public class VehicleController {
         return new ResponseEntity(new StandardResponse("200", "Done!", vehicle), HttpStatus.CREATED);
     }
 
+    @GetMapping(path = "/lastid")
+    public ResponseEntity getLastVid() {
+        String lastVid = vehicleService.getLastVid();
+        return new ResponseEntity(new StandardResponse("200", "Done", lastVid), HttpStatus.CREATED);
+    }
+
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity addVehicle(@RequestBody VehicleDTO dto) {
         vehicleService.addVehicle(dto);
-        return new ResponseEntity(new StandardResponse("200", "Vehicle saved successfull!", dto), HttpStatus.CREATED);
+        return new ResponseEntity(new StandardResponse("200", "Vehicle saved successfully!", dto), HttpStatus.CREATED);
     }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity updateVehicle(@RequestBody VehicleDTO dto) {
         vehicleService.updateVehicle(dto);
-        return new ResponseEntity(new StandardResponse("200", "Vehicle updated successfull!", dto), HttpStatus.CREATED);
+        return new ResponseEntity(new StandardResponse("200", "Vehicle updated successfully!", dto), HttpStatus.CREATED);
     }
 
     @DeleteMapping(params = {"id"})

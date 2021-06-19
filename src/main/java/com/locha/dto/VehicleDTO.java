@@ -21,7 +21,7 @@ public class VehicleDTO {
     private double daily_rate;
     private double monthly_rate;
     private int mileage;
-    private double free_mileage_price;
+    private String free_mileage;
     private double extra_km_price;
     private List<VehicleDetail> vehicleDetailList = new ArrayList<>();
 }

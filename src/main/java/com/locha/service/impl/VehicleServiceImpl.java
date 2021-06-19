@@ -2,6 +2,7 @@ package com.locha.service.impl;
 
 import com.locha.dto.VehicleDTO;
 import com.locha.entity.Vehicle;
+import com.locha.entity.VehicleDetail;
 import com.locha.exception.ValidationException;
 import com.locha.repo.VehicleRepo;
 import com.locha.service.VehicleService;
@@ -59,6 +60,15 @@ public class VehicleServiceImpl implements VehicleService {
     @Override
     public ArrayList<VehicleDTO> findAllVehicles() {
         List<Vehicle> all = vehicleRepo.findAll();
+        for (int i = 0; i < all.size(); i++) {
+            for (int j = 0; j < all.get(i).getVehicleDetailList().size(); j++) {
+                //remove unavailable & currently maintaining vehicles from the list
+                VehicleDetail vd = all.get(i).getVehicleDetailList().get(j);
+                if (vd.getAvailability().equalsIgnoreCase("unavailable") || vd.getMaintenance().equalsIgnoreCase("yes")) {
+                    all.get(i).getVehicleDetailList().remove(j);
+                }
+            }
+        }
         return mapper.map(all, new TypeToken<ArrayList<VehicleDTO>>() {
         }.getType());
     }
@@ -72,5 +82,10 @@ public class VehicleServiceImpl implements VehicleService {
         } else {
             throw new ValidationException("There is no any matching Vehicle in the system!");
         }
+    }
+
+    @Override
+    public String getLastVid() {
+        return vehicleRepo.getLastVid();
     }
 }

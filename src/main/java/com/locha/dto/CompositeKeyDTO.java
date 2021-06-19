@@ -11,5 +11,5 @@ import java.io.Serializable;
 @Data
 public class CompositeKeyDTO implements Serializable {
     private String bid;
-    private String vid;
+    private String vdid;
 }

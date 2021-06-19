@@ -3,6 +3,7 @@ package com.locha.service.impl;
 import com.locha.dto.AdminDTO;
 import com.locha.dto.CustomerDTO;
 import com.locha.dto.DriverDTO;
+import com.locha.dto.UserDTO;
 import com.locha.entity.Admin;
 import com.locha.entity.Customer;
 import com.locha.entity.Driver;
@@ -74,5 +75,17 @@ public class UserServiceImpl implements UserService {
             Driver d = mapper.map(dto, Driver.class);
             driverRepo.save(d);
         }
+    }
+
+    @Override
+    public UserDTO getUser(String email, String password) {
+        /*Optional<User> u = userRepo.findById(id);*/
+        Optional<User> u = userRepo.findByEmailAndPassword(email, password);
+        if (u.isPresent()) {
+            User user = u.get();
+            System.out.println(user.toString());
+            return mapper.map(user, UserDTO.class);
+        }
+        return null;
     }
 }

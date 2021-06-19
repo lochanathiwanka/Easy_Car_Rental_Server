@@ -3,6 +3,7 @@ package com.locha.controller;
 import com.locha.dto.AdminDTO;
 import com.locha.dto.CustomerDTO;
 import com.locha.dto.DriverDTO;
+import com.locha.dto.UserDTO;
 import com.locha.service.UserService;
 import com.locha.util.StandardResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,12 @@ public class UserController {
     public ResponseEntity addDriver(@RequestBody DriverDTO dto) {
         userService.addDriver(dto);
         return new ResponseEntity(new StandardResponse("200", "Driver saved!", dto), HttpStatus.CREATED);
+    }
+
+    @GetMapping(params = {"email", "password"})
+    public ResponseEntity getUser(String email, String password) {
+        UserDTO user = userService.getUser(email, password);
+        return new ResponseEntity(new StandardResponse("200", "Done", user), HttpStatus.CREATED);
     }
 
 }
