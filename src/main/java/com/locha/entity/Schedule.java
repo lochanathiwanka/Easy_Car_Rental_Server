@@ -21,5 +21,6 @@ public class Schedule {
     @JoinColumn(name = "did", referencedColumnName = "did")
     private Driver driver;
 
-    private String date;
+    private String start_date;
+    private String end_date;
 }

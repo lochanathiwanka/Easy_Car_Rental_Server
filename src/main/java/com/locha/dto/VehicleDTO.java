@@ -20,6 +20,7 @@ public class VehicleDTO {
     private String fuel_type;
     private double daily_rate;
     private double monthly_rate;
+    private double ldw_fee;
     private int mileage;
     private String free_mileage;
     private double extra_km_price;

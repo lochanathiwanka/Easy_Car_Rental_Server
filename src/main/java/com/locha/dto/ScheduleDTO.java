@@ -10,5 +10,6 @@ import lombok.NoArgsConstructor;
 public class ScheduleDTO {
     private String sdid;
     private DriverDTO driver;
-    private String date;
+    private String start_date;
+    private String end_date;
 }

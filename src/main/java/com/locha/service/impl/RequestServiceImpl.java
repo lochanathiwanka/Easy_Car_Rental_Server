@@ -73,6 +73,13 @@ public class RequestServiceImpl implements RequestService {
     }
 
     @Override
+    public ArrayList<RequestDTO> findRequestByCid(String cid) {
+        ArrayList<Request> all = requestRepo.findRequestByCId(cid);
+        return mapper.map(all, new TypeToken<ArrayList<RequestDTO>>() {
+        }.getType());
+    }
+
+    @Override
     public String getLastRid() {
         return requestRepo.geLastRid();
     }

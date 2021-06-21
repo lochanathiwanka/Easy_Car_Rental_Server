@@ -14,4 +14,6 @@ public interface UserService {
     void addDriver(DriverDTO dto);
 
     UserDTO getUser(String email, String password);
+
+    String getLastUserId();
 }

@@ -15,6 +15,7 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/request")
@@ -34,10 +35,9 @@ public class RequestController {
     public ResponseEntity uploadBankSlip(@RequestPart("bankSlip") MultipartFile image) {
         try {
             String file_name = image.getOriginalFilename();
-            String[] split = file_name.split("-", 2);
 
             InputStream inputStream = image.getInputStream();
-            Path path = Paths.get("/home/locha/Documents/Easy_Car_Rental_Storage/bank_slips/" + split[0]);
+            Path path = Paths.get("/home/locha/Documents/Easy_Car_Rental_Storage/bank_slips/");
 
             if (!Files.exists(path)) {
                 Files.createDirectories(path);
@@ -52,10 +52,16 @@ public class RequestController {
         }
     }
 
-    @GetMapping(path = "lastrid")
+    @GetMapping(path = "/lastrid")
     public ResponseEntity getLastRid() {
         String lastRid = requestService.getLastRid();
         return new ResponseEntity(new StandardResponse("200", "Done", lastRid), HttpStatus.CREATED);
+    }
+
+    @GetMapping(path = "/get_request", params = {"cid"})
+    public ResponseEntity getRequestByCid(String cid) {
+        ArrayList<RequestDTO> request = requestService.findRequestByCid(cid);
+        return new ResponseEntity(new StandardResponse("200", "Done", request), HttpStatus.CREATED);
     }
 
 }

@@ -1,6 +1,6 @@
 package com.locha.controller;
 
-import com.locha.service.VehicleDetailService;
+import com.locha.service.DriverService;
 import com.locha.util.StandardResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,44 +18,40 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 @RestController
-@RequestMapping("/vehicle_detail")
+@RequestMapping("/driver")
 @CrossOrigin
-public class VehicleDetailController {
+public class DriverController {
 
     @Autowired
-    private VehicleDetailService vehicleDetailService;
-
+    private DriverService driverService;
 
     @GetMapping(path = "/lastid")
-    public ResponseEntity getLastVdid() {
-        String lastVDID = vehicleDetailService.getLastVDID();
-        return new ResponseEntity(new StandardResponse("200", "Done", lastVDID), HttpStatus.CREATED);
+    public ResponseEntity getLastDid() {
+        String lastDid = driverService.getLastDid();
+        return new ResponseEntity(new StandardResponse("200", "Done", lastDid), HttpStatus.CREATED);
     }
 
-    @GetMapping("/get_images/{image}")
+    @GetMapping("/get_image/{image}")
     public void getImages(@PathVariable String image, HttpServletResponse response) throws IOException {
         response.setContentType("image/jpeg;charset=utf-8");
         response.setHeader("Content-Disposition", "inline; filename=girls.png");
 
-        String[] split = image.split("-", 2);
-
         ServletOutputStream outputStream = response.getOutputStream();
 
-        String path = "/home/locha/Documents/Easy_Car_Rental_Storage/vehicles/" + split[0];
+        String path = "/home/locha/Documents/Easy_Car_Rental_Storage/drivers/";
 
         outputStream.write(Files.readAllBytes(Paths.get(path).resolve(image)));
         outputStream.flush();
         outputStream.close();
     }
 
-    @PostMapping(path = "/upload_images", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(path = "/upload_image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity uploadPhotos(@RequestPart("image") MultipartFile image) {
         try {
             String file_name = image.getOriginalFilename();
-            String[] split = file_name.split("-", 2);
 
             InputStream inputStream = image.getInputStream();
-            Path path = Paths.get("/home/locha/Documents/Easy_Car_Rental_Storage/vehicles/" + split[0]);
+            Path path = Paths.get("/home/locha/Documents/Easy_Car_Rental_Storage/drivers/");
 
             if (!Files.exists(path)) {
                 Files.createDirectories(path);

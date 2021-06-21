@@ -88,4 +88,9 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
+
+    @Override
+    public String getLastUserId() {
+        return userRepo.geLastUserId();
+    }
 }

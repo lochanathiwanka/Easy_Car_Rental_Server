@@ -44,4 +44,10 @@ public class UserController {
         return new ResponseEntity(new StandardResponse("200", "Done", user), HttpStatus.CREATED);
     }
 
+    @GetMapping(path = "/lastid")
+    public ResponseEntity getLastUserId() {
+        String lastUserId = userService.getLastUserId();
+        return new ResponseEntity(new StandardResponse("200", "Done", lastUserId), HttpStatus.CREATED);
+    }
+
 }

@@ -36,6 +36,8 @@ public class Vehicle {
     @JsonIgnore
     private double monthly_rate;
     @JsonIgnore
+    private double ldw_fee;
+    @JsonIgnore
     private int mileage;
     @JsonIgnore
     private String free_mileage;
