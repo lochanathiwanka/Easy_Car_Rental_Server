@@ -1,5 +1,6 @@
 package com.locha.controller;
 
+import com.locha.dto.CustomerDTO;
 import com.locha.service.CustomerService;
 import com.locha.util.StandardResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,12 @@ public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
+
+    @GetMapping(path = "/{id}")
+    public ResponseEntity getCustomerById(@PathVariable String id) {
+        CustomerDTO customer = customerService.getCustomerById(id);
+        return new ResponseEntity(new StandardResponse("200", "Done", customer), HttpStatus.CREATED);
+    }
 
     @GetMapping(path = "/lastid")
     public ResponseEntity getMethod() {

@@ -43,7 +43,7 @@ public class VehicleServiceImpl implements VehicleService {
         if (vehicleRepo.existsById(id)) {
             vehicleRepo.deleteById(id);
         } else {
-            throw new ValidationException("There is no any matching Vehicle in the system!");
+            throw new ValidationException("There is no any matching Vehicle Category in the system!");
         }
     }
 
@@ -53,12 +53,19 @@ public class VehicleServiceImpl implements VehicleService {
             Vehicle vehicle = mapper.map(dto, Vehicle.class);
             vehicleRepo.save(vehicle);
         } else {
-            throw new ValidationException("There is no any matching Vehicle in the system!");
+            throw new ValidationException("There is no any matching Vehicle Category in the system!");
         }
     }
 
     @Override
     public ArrayList<VehicleDTO> findAllVehicles() {
+        List<Vehicle> all = vehicleRepo.findAll();
+        return mapper.map(all, new TypeToken<ArrayList<VehicleDTO>>() {
+        }.getType());
+    }
+
+    @Override
+    public ArrayList<VehicleDTO> findAllAvailableVehicles() {
         List<Vehicle> all = vehicleRepo.findAll();
         for (int i = 0; i < all.size(); i++) {
             for (int j = 0; j < all.get(i).getVehicleDetailList().size(); j++) {

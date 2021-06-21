@@ -25,6 +25,12 @@ public class VehicleController {
         return new ResponseEntity(new StandardResponse("200", "Done!", allVehicles), HttpStatus.CREATED);
     }
 
+    @GetMapping(path = "/available_vehicles")
+    public ResponseEntity getAllAvailableVehicles() {
+        ArrayList<VehicleDTO> allVehicles = vehicleService.findAllAvailableVehicles();
+        return new ResponseEntity(new StandardResponse("200", "Done!", allVehicles), HttpStatus.CREATED);
+    }
+
     @GetMapping(path = "/{id}")
     public ResponseEntity searchVehicle(@PathVariable String id) {
         VehicleDTO vehicle = vehicleService.findVehicleById(id);
@@ -37,7 +43,6 @@ public class VehicleController {
         String lastVid = vehicleService.getLastVid();
         return new ResponseEntity(new StandardResponse("200", "Done", lastVid), HttpStatus.CREATED);
     }
-
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity addVehicle(@RequestBody VehicleDTO dto) {

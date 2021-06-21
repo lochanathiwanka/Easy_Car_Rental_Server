@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -68,6 +69,42 @@ public class VehicleDetailController {
             e.printStackTrace();
             return new ResponseEntity(new StandardResponse("200", "Error", null), HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @DeleteMapping(params = {"id"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity deleteVehicle(@RequestParam String id) {
+        vehicleDetailService.deleteVehicle(id);
+        return new ResponseEntity(new StandardResponse("200", "Vehicle is deleted!!", null), HttpStatus.OK);
+    }
+
+    @DeleteMapping(path = "/delete_images", params = {"id"})
+    public ResponseEntity deleteVehicleImages(@RequestParam String id) {
+
+        try {
+            // create a new file object
+            File directory = new File("/home/locha/Documents/Easy_Car_Rental_Storage/vehicles/VD004");
+
+            // list all the files in an array
+            File[] files = directory.listFiles();
+
+            // delete each file from the directory
+            for (File file : files) {
+                file.delete();
+            }
+
+            // delete the directory
+            if (directory.delete()) {
+                return new ResponseEntity(new StandardResponse("200", "Vehicle images are deleted!!", null), HttpStatus.OK);
+            } else {
+                return new ResponseEntity(new StandardResponse("200", "Directory not Found!!", null), HttpStatus.OK);
+            }
+
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
+
+        return new ResponseEntity(new StandardResponse("200", "Vehicle images are not found!!", null), HttpStatus.NOT_FOUND);
+
     }
 
 }
