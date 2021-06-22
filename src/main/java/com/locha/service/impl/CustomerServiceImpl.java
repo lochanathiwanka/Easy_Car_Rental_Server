@@ -7,10 +7,13 @@ import com.locha.exception.ValidationException;
 import com.locha.repo.CustomerRepo;
 import com.locha.service.CustomerService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -39,5 +42,12 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public String getLastCid() {
         return customerRepo.geLastCid();
+    }
+
+    @Override
+    public ArrayList<CustomerDTO> getAllCustomers() {
+        List<Customer> all = customerRepo.findAll();
+        return mapper.map(all, new TypeToken<ArrayList<CustomerDTO>>() {
+        }.getType());
     }
 }

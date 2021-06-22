@@ -1,5 +1,6 @@
 package com.locha.controller;
 
+import com.locha.dto.DriverDTO;
 import com.locha.service.DriverService;
 import com.locha.util.StandardResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/driver")
@@ -25,10 +27,16 @@ public class DriverController {
     @Autowired
     private DriverService driverService;
 
+    @GetMapping
+    public ResponseEntity getAllDrivers() {
+        ArrayList<DriverDTO> allDrivers = driverService.getAllDrivers();
+        return new ResponseEntity(new StandardResponse("200", "Done", allDrivers), HttpStatus.OK);
+    }
+
     @GetMapping(path = "/lastid")
     public ResponseEntity getLastDid() {
         String lastDid = driverService.getLastDid();
-        return new ResponseEntity(new StandardResponse("200", "Done", lastDid), HttpStatus.CREATED);
+        return new ResponseEntity(new StandardResponse("200", "Done", lastDid), HttpStatus.OK);
     }
 
     @GetMapping("/get_image/{image}")
@@ -58,7 +66,7 @@ public class DriverController {
             }
 
             Files.copy(inputStream, path.resolve(file_name));
-            return new ResponseEntity(new StandardResponse("200", "Image Uploaded", null), HttpStatus.CREATED);
+            return new ResponseEntity(new StandardResponse("200", "Image Uploaded", null), HttpStatus.OK);
 
         } catch (IOException e) {
             e.printStackTrace();

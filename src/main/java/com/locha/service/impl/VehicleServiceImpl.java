@@ -39,7 +39,7 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Override
-    public void deleteVehicle(String id) {
+    public void deleteVehicleCategory(String id) {
         if (vehicleRepo.existsById(id)) {
             vehicleRepo.deleteById(id);
         } else {

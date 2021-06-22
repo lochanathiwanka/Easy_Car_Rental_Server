@@ -17,6 +17,7 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/customer")
@@ -25,6 +26,12 @@ public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
+
+    @GetMapping
+    public ResponseEntity getAllCustomers() {
+        ArrayList<CustomerDTO> allCustomers = customerService.getAllCustomers();
+        return new ResponseEntity(new StandardResponse("200", "Done", allCustomers), HttpStatus.OK);
+    }
 
     @GetMapping(path = "/{id}")
     public ResponseEntity getCustomerById(@PathVariable String id) {

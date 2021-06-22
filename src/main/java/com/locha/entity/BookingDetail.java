@@ -25,7 +25,10 @@ public class BookingDetail {
     @JoinColumn(name = "vdid", referencedColumnName = "vdid", insertable = false, updatable = false)
     private VehicleDetail vehicleDetail;
 
-    private String did;
+    @ManyToOne
+    @JoinColumn(name = "did", referencedColumnName = "did", insertable = false, updatable = false)
+    private Driver driver;
+
     private String pickup_date;
     private String return_date;
     private String return_time;

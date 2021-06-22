@@ -51,14 +51,14 @@ public class VehicleController {
     }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity updateVehicle(@RequestBody VehicleDTO dto) {
+    public ResponseEntity updateVehicleCategory(@RequestBody VehicleDTO dto) {
         vehicleService.updateVehicle(dto);
         return new ResponseEntity(new StandardResponse("200", "Vehicle updated successfully!", dto), HttpStatus.CREATED);
     }
 
     @DeleteMapping(params = {"id"})
-    public ResponseEntity deleteVehicle(@RequestParam String id) {
-        vehicleService.deleteVehicle(id);
+    public ResponseEntity deleteVehicleCategory(@RequestParam String id) {
+        vehicleService.deleteVehicleCategory(id);
         return new ResponseEntity(new StandardResponse("200", "Vehicle was deleted!!", null), HttpStatus.CREATED);
     }
 }

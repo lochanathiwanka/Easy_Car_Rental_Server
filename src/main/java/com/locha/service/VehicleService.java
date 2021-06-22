@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public interface VehicleService {
     void addVehicle(VehicleDTO dto);
 
-    void deleteVehicle(String id);
+    void deleteVehicleCategory(String id);
 
     void updateVehicle(VehicleDTO dto);
 

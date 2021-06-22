@@ -18,4 +18,6 @@ public interface RequestService {
     ArrayList<RequestDTO> findRequestByCid(String cid);
 
     String getLastRid();
+
+    ArrayList<RequestDTO> getAllRequests();
 }

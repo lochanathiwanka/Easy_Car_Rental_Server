@@ -83,4 +83,11 @@ public class RequestServiceImpl implements RequestService {
     public String getLastRid() {
         return requestRepo.geLastRid();
     }
+
+    @Override
+    public ArrayList<RequestDTO> getAllRequests() {
+        List<Request> all = requestRepo.findAll();
+        return mapper.map(all, new TypeToken<ArrayList<RequestDTO>>() {
+        }.getType());
+    }
 }

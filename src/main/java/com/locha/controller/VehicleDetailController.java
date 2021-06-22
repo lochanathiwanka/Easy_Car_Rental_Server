@@ -1,5 +1,6 @@
 package com.locha.controller;
 
+import com.locha.dto.VehicleDetailDTO;
 import com.locha.service.VehicleDetailService;
 import com.locha.util.StandardResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,7 +83,7 @@ public class VehicleDetailController {
 
         try {
             // create a new file object
-            File directory = new File("/home/locha/Documents/Easy_Car_Rental_Storage/vehicles/VD004");
+            File directory = new File("/home/locha/Documents/Easy_Car_Rental_Storage/vehicles/" + id);
 
             // list all the files in an array
             File[] files = directory.listFiles();
@@ -104,7 +105,12 @@ public class VehicleDetailController {
         }
 
         return new ResponseEntity(new StandardResponse("200", "Vehicle images are not found!!", null), HttpStatus.NOT_FOUND);
+    }
 
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity updateVehicle(@RequestBody VehicleDetailDTO dto) {
+        vehicleDetailService.updateVehicle(dto);
+        return new ResponseEntity(new StandardResponse("200", "Vehicle updated successfully!", dto), HttpStatus.OK);
     }
 
 }

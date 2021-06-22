@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -52,16 +54,36 @@ public class RequestController {
         }
     }
 
+    @GetMapping("/get_image/{image}")
+    public void getBankSlipImage(@PathVariable String image, HttpServletResponse response) throws IOException {
+        response.setContentType("image/jpeg;charset=utf-8");
+        response.setHeader("Content-Disposition", "inline; filename=girls.png");
+
+        ServletOutputStream outputStream = response.getOutputStream();
+
+        String path = "/home/locha/Documents/Easy_Car_Rental_Storage/bank_slips/";
+
+        outputStream.write(Files.readAllBytes(Paths.get(path).resolve(image)));
+        outputStream.flush();
+        outputStream.close();
+    }
+
     @GetMapping(path = "/lastrid")
     public ResponseEntity getLastRid() {
         String lastRid = requestService.getLastRid();
-        return new ResponseEntity(new StandardResponse("200", "Done", lastRid), HttpStatus.CREATED);
+        return new ResponseEntity(new StandardResponse("200", "Done", lastRid), HttpStatus.OK);
+    }
+
+    @GetMapping()
+    public ResponseEntity getAllRequests() {
+        ArrayList<RequestDTO> all = requestService.getAllRequests();
+        return new ResponseEntity(new StandardResponse("200", "Done", all), HttpStatus.OK);
     }
 
     @GetMapping(path = "/get_request", params = {"cid"})
     public ResponseEntity getRequestByCid(String cid) {
         ArrayList<RequestDTO> request = requestService.findRequestByCid(cid);
-        return new ResponseEntity(new StandardResponse("200", "Done", request), HttpStatus.CREATED);
+        return new ResponseEntity(new StandardResponse("200", "Done", request), HttpStatus.OK);
     }
 
 }
