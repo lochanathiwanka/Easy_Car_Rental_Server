@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class ScheduleDTO {
-    private String sdid;
+public class DriverScheduleDTO {
+    private String driver_sdid;
     private DriverDTO driver;
     private String start_date;
     private String end_date;

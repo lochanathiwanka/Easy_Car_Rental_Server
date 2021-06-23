@@ -1,6 +1,5 @@
 package com.locha.dto;
 
-import com.locha.entity.VehicleDetail;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,5 +23,5 @@ public class VehicleDTO {
     private int mileage;
     private String free_mileage;
     private double extra_km_price;
-    private List<VehicleDetail> vehicleDetailList = new ArrayList<>();
+    private List<VehicleDetailDTO> vehicleDetailList = new ArrayList<>();
 }

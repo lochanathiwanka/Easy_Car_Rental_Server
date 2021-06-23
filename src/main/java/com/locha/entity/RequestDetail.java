@@ -31,4 +31,6 @@ public class RequestDetail {
     private String return_date;
     private double rental_fee;
     private double ldw_fee;
+    private String message;
+    private String status;
 }

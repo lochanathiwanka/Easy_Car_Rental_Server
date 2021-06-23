@@ -1,5 +1,6 @@
 package com.locha.service.impl;
 
+import com.locha.dto.CustomeDTO;
 import com.locha.dto.RequestDTO;
 import com.locha.entity.Request;
 import com.locha.exception.ValidationException;
@@ -89,5 +90,21 @@ public class RequestServiceImpl implements RequestService {
         List<Request> all = requestRepo.findAll();
         return mapper.map(all, new TypeToken<ArrayList<RequestDTO>>() {
         }.getType());
+    }
+
+    @Override
+    public ArrayList<CustomeDTO> test(String id) {
+        ArrayList<Object[]> test = requestRepo.test(id);
+        ArrayList<CustomeDTO> all = new ArrayList<>();
+        for (Object[] o : test) {
+            all.add(new CustomeDTO(
+                    o[0].toString(),
+                    o[1].toString(),
+                    o[2].toString(),
+                    Integer.parseInt(o[3].toString())
+            ));
+        }
+
+        return all;
     }
 }

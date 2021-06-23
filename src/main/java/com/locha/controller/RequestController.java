@@ -1,5 +1,6 @@
 package com.locha.controller;
 
+import com.locha.dto.CustomeDTO;
 import com.locha.dto.RequestDTO;
 import com.locha.service.RequestService;
 import com.locha.util.StandardResponse;
@@ -84,6 +85,14 @@ public class RequestController {
     public ResponseEntity getRequestByCid(String cid) {
         ArrayList<RequestDTO> request = requestService.findRequestByCid(cid);
         return new ResponseEntity(new StandardResponse("200", "Done", request), HttpStatus.OK);
+    }
+
+
+    //test
+    @GetMapping(path = "/get")
+    public ResponseEntity test() {
+        ArrayList<CustomeDTO> test = requestService.test("V001");
+        return new ResponseEntity(new StandardResponse("200", "Done", test), HttpStatus.OK);
     }
 
 }

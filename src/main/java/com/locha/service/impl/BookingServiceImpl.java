@@ -29,4 +29,9 @@ public class BookingServiceImpl implements BookingService {
             bookingRepo.save(booking);
         }
     }
+
+    @Override
+    public String getLastBookingId() {
+        return bookingRepo.geLastBookingId();
+    }
 }

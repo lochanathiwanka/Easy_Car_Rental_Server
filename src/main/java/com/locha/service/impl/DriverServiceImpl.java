@@ -2,6 +2,7 @@ package com.locha.service.impl;
 
 import com.locha.dto.DriverDTO;
 import com.locha.entity.Driver;
+import com.locha.entity.User;
 import com.locha.repo.DriverRepo;
 import com.locha.service.DriverService;
 import org.modelmapper.ModelMapper;
@@ -25,7 +26,9 @@ public class DriverServiceImpl implements DriverService {
 
     @Override
     public ArrayList<DriverDTO> getAllDrivers() {
-        List<Driver> all = driverRepo.findAll();
+        User user = new User();
+        user.setUid("000");
+        List<Driver> all = driverRepo.findAllByUserNotLike(user);
         return mapper.map(all, new TypeToken<ArrayList<DriverDTO>>() {
         }.getType());
     }

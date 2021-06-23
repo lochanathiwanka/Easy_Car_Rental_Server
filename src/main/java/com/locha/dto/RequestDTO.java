@@ -15,7 +15,5 @@ public class RequestDTO {
     private CustomerDTO customer;
     private double total_fee;
     private String bank_slip;
-    private String message;
-    private String status;
     private List<RequestDetailDTO> request_detail_list = new ArrayList<>();
 }

@@ -20,6 +20,12 @@ public class BookingController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity addBooking(@RequestBody BookingDTO dto) {
         bookingService.addBooking(dto);
-        return new ResponseEntity(new StandardResponse("200", "Booking was successfull!", dto), HttpStatus.CREATED);
+        return new ResponseEntity(new StandardResponse("200", "Booking was successful!", dto), HttpStatus.CREATED);
+    }
+
+    @GetMapping
+    public ResponseEntity getLastBookingId() {
+        String lastBookingId = bookingService.getLastBookingId();
+        return new ResponseEntity(new StandardResponse("200", "Done", lastBookingId), HttpStatus.OK);
     }
 }
