@@ -9,4 +9,6 @@ public interface DriverService {
     ArrayList<DriverDTO> getAllDrivers();
 
     String getLastDid();
+
+    void updateDriverAvailability(String id);
 }

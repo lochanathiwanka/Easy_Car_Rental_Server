@@ -24,4 +24,5 @@ public interface RequestService {
 
     ArrayList<CustomeDTO> test(String id);
 
+    void deleteRequestDetails(String rid);
 }

@@ -6,9 +6,13 @@ import com.locha.exception.ValidationException;
 import com.locha.repo.BookingRepo;
 import com.locha.service.BookingService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @Transactional
@@ -33,5 +37,12 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public String getLastBookingId() {
         return bookingRepo.geLastBookingId();
+    }
+
+    @Override
+    public ArrayList<BookingDTO> getAll() {
+        List<Booking> all = bookingRepo.findAll();
+        return mapper.map(all, new TypeToken<ArrayList<BookingDTO>>() {
+        }.getType());
     }
 }

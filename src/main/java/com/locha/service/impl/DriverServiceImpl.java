@@ -3,6 +3,7 @@ package com.locha.service.impl;
 import com.locha.dto.DriverDTO;
 import com.locha.entity.Driver;
 import com.locha.entity.User;
+import com.locha.exception.ValidationException;
 import com.locha.repo.DriverRepo;
 import com.locha.service.DriverService;
 import org.modelmapper.ModelMapper;
@@ -13,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -36,5 +38,16 @@ public class DriverServiceImpl implements DriverService {
     @Override
     public String getLastDid() {
         return driverRepo.geLastDid();
+    }
+
+    @Override
+    public void updateDriverAvailability(String id) {
+        Optional<Driver> d = driverRepo.findById(id);
+        if (d.isPresent()) {
+            Driver driver = d.get();
+            driver.setAvailability("Unavailable");
+        } else {
+            throw new ValidationException("There is no any matching Driver in the system!");
+        }
     }
 }

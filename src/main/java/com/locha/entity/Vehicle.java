@@ -17,7 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@JsonIgnoreProperties({"hibernateLazyInitializer", "hibernateLazyInitializer"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Vehicle {
     @Id
     private String vid;

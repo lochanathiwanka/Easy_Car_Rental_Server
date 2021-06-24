@@ -9,4 +9,6 @@ public interface VehicleDetailService {
     void deleteVehicle(String id);
 
     void updateVehicle(VehicleDetailDTO dto);
+
+    void updateVehicleAvailability(String id);
 }

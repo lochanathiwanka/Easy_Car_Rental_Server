@@ -95,4 +95,11 @@ public class RequestController {
         return new ResponseEntity(new StandardResponse("200", "Done", test), HttpStatus.OK);
     }
 
+
+    @DeleteMapping(path = "delete_request", params = {"rid"})
+    public ResponseEntity deleteRequestDetails(@RequestParam String rid) {
+        requestService.deleteRequestDetails(rid);
+        return new ResponseEntity(new StandardResponse("200", "Request deleted!", null), HttpStatus.OK);
+    }
+
 }

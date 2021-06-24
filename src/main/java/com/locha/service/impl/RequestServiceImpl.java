@@ -107,4 +107,11 @@ public class RequestServiceImpl implements RequestService {
 
         return all;
     }
+
+    @Override
+    public void deleteRequestDetails(String rid) {
+        if (requestRepo.existsById(rid)) {
+            requestRepo.deleteById(rid);
+        }
+    }
 }

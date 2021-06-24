@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 @Transactional
 public class VehicleDetailServiceImpl implements VehicleDetailService {
@@ -40,6 +42,17 @@ public class VehicleDetailServiceImpl implements VehicleDetailService {
         if (vehicleDetailRepo.existsById(dto.getVdid())) {
             VehicleDetail vehicleDetail = mapper.map(dto, VehicleDetail.class);
             vehicleDetailRepo.save(vehicleDetail);
+        } else {
+            throw new ValidationException("There is no any matching Vehicle in the system!");
+        }
+    }
+
+    @Override
+    public void updateVehicleAvailability(String id) {
+        Optional<VehicleDetail> vd = vehicleDetailRepo.findById(id);
+        if (vd.isPresent()) {
+            VehicleDetail vehicleDetail = vd.get();
+            vehicleDetail.setAvailability("Unavailable");
         } else {
             throw new ValidationException("There is no any matching Vehicle in the system!");
         }

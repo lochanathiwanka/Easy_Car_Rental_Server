@@ -110,7 +110,13 @@ public class VehicleDetailController {
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity updateVehicle(@RequestBody VehicleDetailDTO dto) {
         vehicleDetailService.updateVehicle(dto);
-        return new ResponseEntity(new StandardResponse("200", "Vehicle updated successfully!", dto), HttpStatus.OK);
+        return new ResponseEntity(new StandardResponse("200", "Vehicle updated successfully!", null), HttpStatus.OK);
+    }
+
+    @PutMapping(path = "/update_availability", params = {"id"})
+    public ResponseEntity updateVehicleAvailability(@RequestParam String id) {
+        vehicleDetailService.updateVehicleAvailability(id);
+        return new ResponseEntity(new StandardResponse("200", "Vehicle availability updated successfully!", null), HttpStatus.OK);
     }
 
 }

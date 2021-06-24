@@ -9,6 +9,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+
 @RestController
 @RequestMapping("/booking")
 @CrossOrigin
@@ -24,8 +26,20 @@ public class BookingController {
     }
 
     @GetMapping
+    public ResponseEntity getAllBookings() {
+        ArrayList<BookingDTO> all = bookingService.getAll();
+        return new ResponseEntity(new StandardResponse("200", "Done", all), HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/last_id")
     public ResponseEntity getLastBookingId() {
         String lastBookingId = bookingService.getLastBookingId();
         return new ResponseEntity(new StandardResponse("200", "Done", lastBookingId), HttpStatus.OK);
     }
+
+    @PutMapping()
+    public ResponseEntity updateBooking() {
+        return new ResponseEntity(new StandardResponse("200", "Booking details updated!", null), HttpStatus.OK);
+    }
+
 }

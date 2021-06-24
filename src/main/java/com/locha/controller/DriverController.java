@@ -74,4 +74,10 @@ public class DriverController {
         }
     }
 
+    @PutMapping(path = "/update_availability", params = {"id"})
+    public ResponseEntity updateDriverAvailability(@RequestParam String id) {
+        driverService.updateDriverAvailability(id);
+        return new ResponseEntity(new StandardResponse("200", "Driver availability updated successfully!", null), HttpStatus.OK);
+    }
+
 }
