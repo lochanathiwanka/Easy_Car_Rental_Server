@@ -11,4 +11,6 @@ public interface DriverService {
     String getLastDid();
 
     void updateDriverAvailability(String id);
+
+    DriverDTO getDriverById(String id);
 }

@@ -11,4 +11,5 @@ public interface BookingService {
 
     ArrayList<BookingDTO> getAll();
 
+    void updateBooking(String id, double fee);
 }

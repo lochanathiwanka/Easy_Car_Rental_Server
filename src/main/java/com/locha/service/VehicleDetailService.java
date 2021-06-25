@@ -10,5 +10,5 @@ public interface VehicleDetailService {
 
     void updateVehicle(VehicleDetailDTO dto);
 
-    void updateVehicleAvailability(String id);
+    void updateVehicleAvailability(String id, String status);
 }

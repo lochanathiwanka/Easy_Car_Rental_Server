@@ -48,11 +48,11 @@ public class VehicleDetailServiceImpl implements VehicleDetailService {
     }
 
     @Override
-    public void updateVehicleAvailability(String id) {
+    public void updateVehicleAvailability(String id, String status) {
         Optional<VehicleDetail> vd = vehicleDetailRepo.findById(id);
         if (vd.isPresent()) {
             VehicleDetail vehicleDetail = vd.get();
-            vehicleDetail.setAvailability("Unavailable");
+            vehicleDetail.setAvailability(status);
         } else {
             throw new ValidationException("There is no any matching Vehicle in the system!");
         }

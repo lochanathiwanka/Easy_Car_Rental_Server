@@ -37,8 +37,9 @@ public class BookingController {
         return new ResponseEntity(new StandardResponse("200", "Done", lastBookingId), HttpStatus.OK);
     }
 
-    @PutMapping()
-    public ResponseEntity updateBooking() {
+    @PutMapping(params = {"id", "fee"})
+    public ResponseEntity updateBooking(@RequestParam String id, @RequestParam double fee) {
+        bookingService.updateBooking(id, fee);
         return new ResponseEntity(new StandardResponse("200", "Booking details updated!", null), HttpStatus.OK);
     }
 

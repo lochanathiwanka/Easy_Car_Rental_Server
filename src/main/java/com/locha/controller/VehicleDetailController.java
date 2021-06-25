@@ -113,9 +113,9 @@ public class VehicleDetailController {
         return new ResponseEntity(new StandardResponse("200", "Vehicle updated successfully!", null), HttpStatus.OK);
     }
 
-    @PutMapping(path = "/update_availability", params = {"id"})
-    public ResponseEntity updateVehicleAvailability(@RequestParam String id) {
-        vehicleDetailService.updateVehicleAvailability(id);
+    @PutMapping(path = "/update_availability", params = {"id", "status"})
+    public ResponseEntity updateVehicleAvailability(@RequestParam String id, @RequestParam String status) {
+        vehicleDetailService.updateVehicleAvailability(id, status);
         return new ResponseEntity(new StandardResponse("200", "Vehicle availability updated successfully!", null), HttpStatus.OK);
     }
 

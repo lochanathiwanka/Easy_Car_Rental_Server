@@ -37,6 +37,12 @@ public class DriverScheduleController {
         return new ResponseEntity(new StandardResponse("200", "Done", all), HttpStatus.OK);
     }
 
+    @GetMapping(path = "get/{id}")
+    public ResponseEntity getDriverScheduleById(@PathVariable String id) {
+        ArrayList<DriverScheduleDTO> schedule = driverScheduleService.getScheduleById(id);
+        return new ResponseEntity(new StandardResponse("200", "Done", schedule), HttpStatus.OK);
+    }
+
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity updateDriverSchedule(@RequestBody DriverScheduleDTO dto) {
         driverScheduleService.updateSchedule(dto);

@@ -1,6 +1,7 @@
 package com.locha.service.impl;
 
 import com.locha.dto.DriverScheduleDTO;
+import com.locha.entity.Driver;
 import com.locha.entity.DriverSchedule;
 import com.locha.exception.ValidationException;
 import com.locha.repo.DriverScheduleRepo;
@@ -63,5 +64,14 @@ public class DriverScheduleServiceImpl implements DriverScheduleService {
         } else {
             throw new ValidationException("Cannot find a driver!");
         }
+    }
+
+    @Override
+    public ArrayList<DriverScheduleDTO> getScheduleById(String id) {
+        Driver driver = new Driver();
+        driver.setDid(id);
+        ArrayList<DriverSchedule> all = driverScheduleRepo.findAllByDriver(driver);
+        return mapper.map(all, new TypeToken<ArrayList<DriverScheduleDTO>>() {
+        }.getType());
     }
 }

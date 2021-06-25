@@ -45,4 +45,15 @@ public class BookingServiceImpl implements BookingService {
         return mapper.map(all, new TypeToken<ArrayList<BookingDTO>>() {
         }.getType());
     }
+
+    @Override
+    public void updateBooking(String id, double fee) {
+        if (bookingRepo.existsById(id)) {
+            Booking booking = bookingRepo.getById(id);
+            double old_total_fee = booking.getTotal_fee();
+            booking.setTotal_fee(old_total_fee + fee);
+        } else {
+            throw new ValidationException("There is no any matching booking");
+        }
+    }
 }

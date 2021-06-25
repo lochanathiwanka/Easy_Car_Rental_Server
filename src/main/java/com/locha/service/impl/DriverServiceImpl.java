@@ -50,4 +50,17 @@ public class DriverServiceImpl implements DriverService {
             throw new ValidationException("There is no any matching Driver in the system!");
         }
     }
+
+    @Override
+    public DriverDTO getDriverById(String id) {
+        User user = new User();
+        user.setUid(id);
+        Optional<Driver> d = driverRepo.findByUser(user);
+        if (d.isPresent()) {
+            Driver driver = d.get();
+            return mapper.map(driver, DriverDTO.class);
+        } else {
+            throw new ValidationException("There is no any matching Driver in the system!");
+        }
+    }
 }

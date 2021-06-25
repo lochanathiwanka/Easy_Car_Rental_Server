@@ -33,6 +33,12 @@ public class DriverController {
         return new ResponseEntity(new StandardResponse("200", "Done", allDrivers), HttpStatus.OK);
     }
 
+    @GetMapping(path = "get/{id}")
+    public ResponseEntity getDriverById(@PathVariable String id) {
+        DriverDTO driver = driverService.getDriverById(id);
+        return new ResponseEntity(new StandardResponse("200", "Done", driver), HttpStatus.OK);
+    }
+
     @GetMapping(path = "/lastid")
     public ResponseEntity getLastDid() {
         String lastDid = driverService.getLastDid();

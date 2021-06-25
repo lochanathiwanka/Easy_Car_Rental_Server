@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface DriverRepo extends JpaRepository<Driver, String> {
 
@@ -13,4 +14,6 @@ public interface DriverRepo extends JpaRepository<Driver, String> {
     String geLastDid();
 
     List<Driver> findAllByUserNotLike(User user);
+
+    Optional<Driver> findByUser(User user);
 }

@@ -14,4 +14,6 @@ public interface DriverScheduleService {
     void updateSchedule(DriverScheduleDTO dto);
 
     void deleteSchedule(String id);
+
+    ArrayList<DriverScheduleDTO> getScheduleById(String id);
 }
